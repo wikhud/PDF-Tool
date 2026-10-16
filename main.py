@@ -6,19 +6,20 @@ from PyQt5.QtCore import QRegExp
 from PyPDF2 import PdfMerger, PdfReader, PdfWriter
 from PyQt5.QtGui import QPixmap
 from PyQt5 import QtCore
-import fitz  # PyMuPDF
+# import fitz  # PyMuPDF
 import os
 import io
 from PyQt5.QtGui import QFont
 
-import fitz  # PyMuPDF
+# import fitz  # PyMuPDF
 import os
 import os
-import fitz  # PyMuPDF
+# import fitz  # PyMuPDF
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtGui import QPixmap, QImage
 from PyQt5.QtCore import Qt
+import pymupdf
 
 
 class ButtonFrameExample(QMainWindow):
@@ -388,7 +389,9 @@ class ButtonFrameExample(QMainWindow):
 
 
     def pdf_to_image(self, pdf_data):
-        pdf_document = fitz.open(stream=pdf_data)
+        # pdf_document = fitz.open(stream=pdf_data)
+        pdf_document = pymupdf.open(stream=pdf_data)
+
         images = []
 
         for page_num in range(pdf_document.page_count):
